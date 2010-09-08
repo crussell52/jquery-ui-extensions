@@ -2,7 +2,7 @@
 * extension for jQuery UI 1.8 autocomplete which provides caching when using a
 * remote data source.
 *
-* Copyright (c) 2010, Christopher Russell
+* Copyright (c) 2010, Christopher Russell (http://github.com/crussell52/jquery-ui-extensions)
 * Dual licensed under the MIT or GPL Version 2 licenses.
 *
 * MIT license: http://www.opensource.org/licenses/mit-license.php

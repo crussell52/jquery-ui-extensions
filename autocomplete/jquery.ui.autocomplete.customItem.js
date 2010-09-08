@@ -2,7 +2,7 @@
  * extension for jQuery UI 1.8 autocomplete which provides option for
  * customizing items in suggestion list.
  *
- * Copyright (c) 2010, Christopher Russell
+ * Copyright (c) 2010, Christopher Russell (http://github.com/crussell52/jquery-ui-extensions/)
  * Dual licensed under the MIT or GPL Version 2 licenses.
  *
  * MIT license: http://www.opensource.org/licenses/mit-license.php
@@ -16,19 +16,14 @@
    * and term represents the search term used to get the results:
    *   function (term, item)
    */
+  var renderItem = $.ui.autocomplete.prototype._renderItem;
   $.ui.autocomplete.prototype._renderItem = function (ul, item) {
-    // if customItem is defined, then use it to generate the anchor
-    // otherwise use standard technique.
-    var anchor = (this.options.customItem) ?
-      this.options.customItem(this.term, item) :
-      $("<a></a>").text(item.label);
-    
-    // build the full item and append it to the list
-    // this is the same logic used in the plugin, but we are using
-    // the anchor created above.
-    return $("<li></li>")
-    .data("item.autocomplete", item)
-    .append(anchor)
-    .appendTo(ul);
+    // always let the base implementation execute
+    var li = renderItem.apply(this, [ul,item]);
+    // if customItem is configured, then replace the anchor created by the
+    // base implementation with the output of the custom function.
+    if (this.options.customItem) {
+      $('a', li).replaceWith(this.options.customItem(ul, item));
+    }
   };
 })(jQuery);

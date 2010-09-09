@@ -17,8 +17,6 @@
   */
   var initSource = $.ui.autocomplete.prototype._initSource;
   $.ui.autocomplete.prototype._initSource = function() {
-    var self = this;
-
     // if a string was specified for the source, it's assumed to be a
     // remote data url.  In this case, we want to use our own function
     // for handling it, rather than the anonymous function that the base
